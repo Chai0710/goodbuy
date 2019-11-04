@@ -1,0 +1,263 @@
+body {
+  background: image-url("background.jpg") no-repeat center center fixed;
+  // background-size: 100% auto;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+.card-img-left {
+  display: flex;
+  justify-content: center;
+}
+.default-pic {
+  width: 100%;
+  margin: auto;
+  margin-left: 10px;
+}
+.text-wrap .badge {
+  font-size: 100%;
+  margin-bottom: 10px;
+  font-weight: 400;
+}
+
+// wrapper部分
+@media screen and (min-width: 768px) {
+  #wrapper {
+    display: flex;
+  }
+}
+@media screen and (max-width: 767px) {
+  #wrapper {
+    display: block;
+  }
+}
+// mac navbar部分
+.pc-sidebar-link:hover > span {
+  color: #feb14a;
+}
+.change_language li {
+  list-style: none;
+}
+.pc-sidebar-language:hover {
+  color: #feb14a;
+}
+
+@media screen and (min-width: 768px) {
+  .mac.sidebar {
+    display: flex;
+  }
+  .row {
+    width: 100%;
+  }
+
+  .card {
+    box-sizing: border-box;
+    margin: 10px;
+    width: 48%;
+    box-shadow: 3px 3px 10px #333;
+  }
+  .time span {
+    font-size: 16px;
+    vertical-align: middle;
+  }
+  .fa {
+    font-size: 20px;
+    vertical-align: middle;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .mac {
+    display: none !important;
+  }
+  .default-pic {
+    width: 150px;
+  }
+}
+
+// phone navbar 部分
+.dropdown-toggle:hover {
+  color: #ffffff;
+}
+.nav-pills .show > .nav-link {
+  background-color: #feb14a;
+}
+
+@media screen and (min-width: 768px) {
+  .phone {
+    display: none !important;
+  }
+}
+.phone-nav-button {
+  padding: 0.5rem 0.3rem;
+  font-size: 0.8rem;
+}
+
+@media screen and (max-width: 767px) {
+  .phone {
+    background-color: rgba(32, 55, 28, 0.8);
+  }
+  .phone_sidebar-logo {
+    max-width: 35px;
+  }
+  .phone_sidebar-logo img {
+    width: 100%;
+    border-radius: 50%;
+  }
+}
+.change_language {
+  margin: 50px 0 30px;
+  padding: 0;
+  text-align: center;
+}
+.change_language li a {
+  list-style: none;
+  padding: 5px;
+  color: #ebd8c5;
+  text-decoration: none;
+}
+.phone-left-menu {
+  transform: translate3d(-50px, 40px, 1px);
+}
+
+// 標題
+@media screen and (max-width: 767px) {
+  h1 {
+    text-align: center;
+  }
+}
+
+// mac table部分
+@media screen and (max-width: 767px) {
+  .card.shadow.mb-4 {
+    display: none;
+  }
+}
+
+// phone card 部分
+
+.phone-card {
+  text-align: center;
+}
+
+@media screen and (min-width: 768px) {
+  .phone-card {
+    display: none;
+  }
+}
+
+.card.mt-3 {
+  justify-content: center;
+}
+
+@media screen and (max-width: 767px) {
+  .card.shadow.mb-4 {
+    display: none;
+  }
+}
+
+.url_for_buy {
+  font-size: 16px;
+  color: #5672d8;
+}
+
+.title {
+  color: #555;
+  font-size: 36px;
+}
+
+@media screen and (max-width: 768px) {
+  .modal.show .modal-dialog {
+    margin: 3rem;
+  }
+  .qrcodebox img {
+    width: 200px;
+  }
+  .title {
+    font-size: 30px;
+  }
+  .url_for_buy {
+    font-size: 14px;
+  }
+}
+
+.newuser_guide {
+  max-width: 30rem;
+}
+.pc-card-title {
+  display: flex;
+  align-items: center;
+}
+
+td .fa {
+  font-size: 16px;
+}
+.ta-info {
+  margin-top: 30px;
+}
+
+.ta-title {
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.ta-content {
+  color: #64806a;
+  font-weight: 600;
+  display: inline-block;
+  margin-left: 30px;
+}
+
+.card hr {
+  margin-top: 1rem;
+  margin-bottom: 0.5rem;
+}
+
+.text-content p {
+  margin-bottom: 0;
+}
+
+.fav .star-nil {
+  text-decoration: none;
+  font-size: 28px;
+  color: #fff;
+  -webkit-text-stroke: 2px #feb14a;
+  text-decoration: none;
+}
+
+.fav .star-full {
+  font-size: 28px;
+  color: #feb14a;
+  text-decoration: none;
+  -webkit-text-stroke: none;
+}
+.fav .star-full:hover,
+.fav .star-nil:hover {
+  color: #feb14a;
+}
+
+.card-body {
+  position: relative;
+}
+
+.fav {
+  position: absolute;
+  right: 5px;
+  top: 0px;
+}
+.pc-time_block svg {
+  vertical-align: middle;
+}
+
+// show 頁面
+
+.container.show-shopinfo_box {
+  margin-bottom: 2rem;
+}
+
+@media screen and (max-width: 768px) {
+  .container.show-shopinfo_box {
+    padding: 0;
+  }
+}

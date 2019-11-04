@@ -1,0 +1,177 @@
+
+  <div id="wrapper"  >
+    <%= render 'shared/sidebar' %>
+
+    <!-- Content Wrapper -->
+    <div id="content-wrapper" class="d-flex flex-column mb-5">
+
+      <!-- Main Content -->
+      <div id="content">
+
+        <!-- Topbar -->
+
+        <!-- End of Topbar -->
+
+        <!-- Begin Page Content -->
+        <div class="container mt-5">
+          <!-- Page Heading -->
+          <h1 class="h3 text-heading"> <%= t("groups.follow_group") %> </h1>
+
+          <!-- DataTales Example -->
+          <div class="mac card-group">
+            <div class="row">
+              <% @groups.each do |group| %>
+              <div class="card dele" data-cid= "<%=group.id %>">
+                <div class="row p-2">
+                  <div class="card-img-left col-4">
+                    <% if group.shop_photo.attached? %>
+                      <%= image_tag group.shop_photo, class: "default-pic" %>
+                    <% else %>
+                        <%= image_tag("logo.png", :alt => "logo", class:"default-pic") %>
+                    <% end %>
+                  </div>
+                
+                
+                  <div class="col-8 text-dark">
+                    <div class="pc-card-title">
+                      <h2 class="card-title mt-2">
+                        <% if group.is_active == true %>
+                          <%= link_to group.title, link_group_path(group.id), class: "text-primary", :remote => true %>
+                        <% else%>
+                          <%= group.title %>
+                        <% end %>
+                      </h2>
+                      <div class="fav" data-pid= "<%=group.id %>">
+                        <%= follow_btn(group) %>
+                      </div>
+                    </div>
+                    <div class="text-wrap-wrap d-flex justify-content-start">
+                      <div class="text-wrap mr-1">
+                        <% if group.is_active == true %>
+                          <span class="badge badge-primary">
+                            <%= t("groups.not_close") %>
+                          </span>
+                        <% else%>
+                          <span class="badge badge-secondary">
+                            <%= t("groups.closed") %>
+                          </span>
+                        <% end %>
+                      </div>
+                    </div>
+                    <div class="text-content mb-3">
+                      <p><i class="fas fa-comments"></i> <%= group.description %></p>
+                      <p><i class="fas fa-user-friends"></i> <%= t("groups.group_owner") %>： <%= group.user.nick_name %></p>
+                    </div>
+                    
+                    <div class="d-flex justify-content-start mb-3">
+                      <div class="status mr-1">
+                        <%= link_to t("groups.see_status"), group_path(group.id), class: "btn btn-status btn-sm" %>
+                        <% if group.is_active == false %>
+                          <%= link_to t("groups.create_again"),new_group_path(:group_id => group.id), class: "btn btn-reopen btn-sm" %>
+                        <% end %>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <% end %>
+            </div>
+          </div>
+
+
+          
+
+          <div class="phone-card">
+            <% @groups.each do |group| %>
+              <div class="card mt-3 dele" data-cid= "<%=group.id %>">
+                <div class="card-body">
+                 <div class="card-img-top">
+                    <% if group.shop_photo.attached? %>
+                      <%= image_tag group.shop_photo, class: "default-pic" %>
+                    <% else %>
+                        <%= image_tag("logo.png", :alt => "logo", class:"default-pic") %>
+                    <% end %>
+                  </div>
+                  <h3 class="card-title">
+                    <% if group.is_active == true %>
+                      <%= link_to group.title, link_group_path(group.id), class: "text-primary", :remote => true %>
+                    <% else%>
+                      <%= group.title %>
+                    <% end %>
+                  </h3>
+                  <div class="fav" data-pid= "<%=group.id %>">
+                    <%= follow_btn(group) %>
+                  </div>
+                  <div class="text-wrap-wrap d-flex justify-content-center">
+                    <div class="text-wrap mr-2">
+                      <% if group.is_active == true %>
+                        <span class="badge badge-primary">
+                          <%= t("groups.not_close") %>
+                        </span>
+                      <% else%>
+                        <span class="badge badge-secondary">
+                          <%= t("groups.closed") %>
+                        </span>
+                      <% end %>
+                    </div>
+                  </div>
+                  <div class="text-content text-dark mb-2">
+                      <p><i class="fas fa-comments"></i> <%= group.description %></p>
+                      <p><i class="fas fa-user-friends"></i> <%= t("groups.group_owner") %>： <%= group.user.nick_name %></p>
+                  </div>
+                  <% unless group.is_active == true %>
+                    <%= link_to t("groups.create_again"),new_group_path(:group_id => group.id), class: "btn btn-reopen btn-sm" %>
+                  <% end %>
+                  <%= link_to t("groups.see_status"), group_path(group.id), class: "btn btn-status btn-sm" %>
+                  <div class="time mt-2 pc-time_block">
+                    <i class="far fa-clock"></i>   
+                    <span class="mr-3">
+                      <%= group.created_at.to_s(:common) %> 
+                    </span>
+                    <% unless group.is_active %>
+                      <div>
+                        ~ <%= group.end_time.to_s(:common) if group.end_time %>
+                      </div>
+                    <% end %>
+                  </div>
+                </div>
+              </div>
+            <% end %>
+          </div>
+
+          <div class="modal" tabindex="-1" role="dialog" id="qrcode-modal">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title"><%= t("groups.your_link") %></h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body">
+                  <div id="event_area"></div>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-dark" data-dismiss="modal">關閉</button> 
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- /.container-fluid -->
+
+      </div>
+      <!-- End of Main Content -->
+
+      <!-- Footer -->
+      <%= render "footer" %>
+      <!-- End of Footer -->
+
+    </div>
+    <!-- End of Content Wrapper -->
+
+
+  </div>
+
+
+

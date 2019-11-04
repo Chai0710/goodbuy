@@ -1,0 +1,175 @@
+li {
+  list-style: none;
+}
+body {
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-align: center;
+  align-items: center;
+  justify-content: center;
+  padding: 50px;
+  background: image-url("background.jpg") no-repeat center center fixed;
+  background-size: 100% auto;
+  min-height: 100vh;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
+.box {
+  background-color: #fff;
+  // width: 400px;
+  padding: 40px;
+  border-radius: 5px;
+  box-shadow: 3px 3px 10px #333;
+}
+
+@media screen and (min-width: 768px) {
+  .logobox {
+    width: 400px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .logo {
+    margin: 0 auto;
+  }
+
+  .logobox p {
+    width: 100%;
+    color: #924c2f;
+    padding: 20px;
+  }
+  .p1 {
+    margin-top: -20px;
+    font-weight: 500;
+    font-size: 24px;
+  }
+  .p2 {
+    margin-top: -50px;
+    font-size: 18px;
+  }
+  .box {
+    display: flex;
+    justify-content: space-between;
+    padding: 0;
+  }
+  .content {
+    width: 400px;
+    background-color: #f5f5f5;
+    padding: 50px;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  body {
+    padding: 0;
+  }
+
+  .box {
+    width: 300px;
+    margin: 30px 20px;
+    padding: 25px 25px;
+  }
+  .logobox p {
+    width: 100%;
+    color: #924c2f;
+  }
+  .p1 {
+    margin-top: -10px;
+    font-size: 20px;
+    font-weight: 500;
+  }
+  .p2 {
+    margin: -10px 0 40px;
+    font-size: 15px;
+  }
+}
+
+.signinh2 {
+  color: #555;
+}
+
+.logo {
+  width: 300px;
+}
+
+@media screen and (max-width: 767px) {
+  .logobox img {
+    width: 100%;
+  }
+}
+
+// .logobox::after {
+//   content: "";
+//   display: block;
+//   width: 100%;
+//   border-bottom: 1px solid #5d4037;
+//   margin: 0px auto 30px;
+// }
+
+input {
+  background-color: #64806a;
+}
+
+a {
+  color: #5d4037;
+  display: block;
+  margin: 5px 0px;
+}
+
+.social-btn-g {
+  margin-top: 0.5rem;
+  color: #fff;
+  background-color: #cc5542;
+}
+
+.social-btn-g:hover {
+  color: #fff;
+  background-color: #c23321;
+}
+
+.social-btn-f {
+  color: #fff;
+  background-color: #415993;
+}
+
+.social-btn-f:hover {
+  color: #fff;
+  background-color: #2d4273;
+}
+
+.btn-back {
+  background-color: #989ea7;
+  color: #fff;
+  width: 150px;
+  margin-bottom: 60px;
+  font-size: 18px;
+}
+
+.btn-back:hover {
+  background-color: rgb(123, 128, 136);
+  color: #fff;
+}
+
+.btn-login {
+  background-color: #f1b45e;
+  color: #fff;
+}
+
+.btn-login:hover {
+  background-color: #eda745;
+  color: #fff;
+}
+
+.label-text {
+  font-weight: 600;
+  font-size: 16px;
+}
+
+.change_language {
+  padding: 0;
+}

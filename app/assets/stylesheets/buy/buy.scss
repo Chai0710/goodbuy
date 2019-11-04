@@ -1,0 +1,175 @@
+* {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  color: #555;
+}
+.wrap {
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-align: center;
+  align-items: center;
+  justify-content: center;
+  padding-top: 40px;
+  padding-bottom: 40px;
+}
+.box {
+  width: 1000px;
+  background-color: #fff;
+  padding: 40px;
+  border-radius: 5px;
+  box-shadow: 10px 10px 10px #555;
+}
+
+a {
+  color: #555;
+}
+
+.menu-pic {
+  max-width: 100%;
+}
+
+#tab-demo {
+  width: 100%;
+}
+#tab-demo > ul {
+  margin: 0;
+  list-style: none;
+}
+.tab-title {
+  list-style: none;
+  display: flex;
+  padding-inline-start: 0px;
+  position: relative;
+  z-index: 1;
+}
+#tab-demo > ul > li:first-child {
+  margin-left: 0;
+}
+#tab-demo > ul > li {
+  display: inline-block;
+  vertical-align: top;
+  font-family: "微軟正黑體";
+  border: 1px solid #64806a;
+  height: 50px;
+  line-height: 50px;
+  background: #64806a;
+  padding: 0 15px;
+  list-style: none;
+  box-sizing: border-box;
+  margin: auto;
+  width: 33.33%;
+  border-radius: 5px 5px 0 0;
+  margin-left: 3px;
+}
+#tab-demo > ul > li a {
+  text-decoration: none;
+}
+#tab-demo > ul > li.active a {
+  color: #555;
+}
+
+#tab-demo > ul > li.active {
+  background: #fff;
+}
+#tab-demo > .tab-inner {
+  border: 1px #64806a solid;
+  border-radius: 0 0 5px 5px;
+  position: relative;
+  top: -1px;
+}
+.tab-inner {
+  padding: 15px;
+  background-color: #fff;
+}
+
+.btn-buy,
+.btn-pay {
+  background-color: #f1b45e;
+  color: #fff;
+}
+
+.btn-buy:hover {
+  background-color: #eda745;
+  color: #fff;
+}
+.btn-pay:hover {
+  background-color: #eda745;
+  color: #fff;
+}
+
+.btn-delete {
+  background-color: #bf4a3b;
+  color: #fff;
+}
+
+.btn-delete:hover {
+  background-color: #a53323;
+  color: #fff;
+}
+
+.order-item {
+  margin-bottom: 10px;
+}
+
+@media screen and (max-width: 767px) {
+  .wrap {
+    padding: 0;
+  }
+  .box {
+    margin: 30px 20px;
+    padding: 5px 20px 25px;
+  }
+  .buy-pc {
+    display: none;
+  }
+  h2 {
+    text-align: center;
+    color: #4ba0b5;
+    font-size: 30px;
+    margin: 20px 0;
+  }
+  .item {
+    margin-top: 60px;
+  }
+  .others-list {
+    margin-top: 0;
+  }
+}
+
+.buy-alert {
+  width: 300px;
+  margin: auto;
+  -moz-animation: cssAnimation 0.5s ease-in 0.5s forwards;
+  /* Firefox */
+  -webkit-animation: cssAnimation 0.5s ease-in 0.5s forwards;
+  /* Safari and Chrome */
+  -o-animation: cssAnimation 0.5s ease-in 0.5s forwards;
+  /* Opera */
+  animation: cssAnimation 0.5s ease-in 0.5s forwards;
+  -webkit-animation-fill-mode: forwards;
+  animation-fill-mode: forwards;
+}
+@keyframes cssAnimation {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+@-webkit - keyframes cssAnimation {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .buy-phone {
+    display: none;
+  }
+}

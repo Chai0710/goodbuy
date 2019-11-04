@@ -1,0 +1,153 @@
+  <!-- Page Wrapper -->
+  
+
+    <!-- Sidebar -->
+    <ul class="mac navbar-nav sidebar sidebar-dark accordion sidebar-cos align-items-center" id="accordionSidebar">
+      <!-- Sidebar - Brand -->
+      <%# <div class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
+        <div class="sidebar-brand-icon d-flex align-items-center justify-content-center">
+          <div class="sidebar-brand-text mx-3">Good Buy</div>
+        </div>
+      </div> %>
+      <div class="sidebar-logo">
+        <%= image_tag("logo.png", :alt => "logo") %>
+      </div>
+      <div id="flash-message">
+        <%= flash[:notice] %>
+      </div>
+      
+      <!-- Heading -->
+      <div class="sidebar-heading mt-3">
+        <%= t("groups.records") %>
+      </div>
+
+      <!-- Divider -->
+      <hr class="sidebar-divider my-0">
+
+      <!-- Nav Item - Pages Collapse Menu -->
+
+      <li class="nav-item active">
+        <%= link_to my_groups_path, class: "nav-link pc-sidebar-link" do %>
+          <span> <%= t("groups.my_group") %> </span>
+        <% end %>
+      </li>
+
+      <li class="nav-item active">
+        <%= link_to attend_groups_path, class: "nav-link pc-sidebar-link" do %>
+          <span> <%= t("groups.attended_group") %> </span>
+        <% end %>
+      </li>
+
+      <li class="nav-item active">
+        <%= link_to show_follow_groups_path, class: "nav-link pc-sidebar-link" do %>
+          <span> <%= t("groups.follow_group") %> </span>
+        <% end %>
+      </li>
+
+
+      <!-- Heading -->
+      <div class="sidebar-heading">
+        <%= t("groups.create_group") %>
+      </div>
+
+      <!-- Divider -->
+      <hr class="sidebar-divider">
+
+      <!-- Nav Item - Charts -->
+      <li class="nav-item active">
+        <%= link_to public_groups_path, class: "nav-link pc-sidebar-link" do %>
+          <span> <%= t("groups.public_group") %> </span>
+        <% end %>
+      </li>
+
+      <!-- Nav Item - Tables -->
+      <li class="nav-item active">
+        <%= link_to new_group_path, class: "nav-link pc-sidebar-link" do %>
+          <span> <%= t("groups.new_group") %> </span>
+        <% end %>
+      </li>
+
+      
+
+      <!-- Heading -->
+      <div class="sidebar-heading">
+        <%= t("groups.others") %>
+      </div>
+
+      <!-- Divider -->
+      <hr class="sidebar-divider d-none d-md-block">
+
+      <!-- Nav Item - Charts -->
+
+      <li class="nav-item active">
+        <%= link_to edit_user_registration_path, class: "nav-link pc-sidebar-link" do %>
+          <span> <%= t("groups.self_info") %> </span>
+        <% end %>
+      </li>
+      
+
+      <!-- Nav Item - Tables -->
+      <li class="nav-item active">
+        <%= link_to destroy_user_session_path, class: "nav-link pc-sidebar-link" ,method: 'delete' do %>
+          <span> <%= t("groups.logout") %> </span>
+        <% end %>
+      </li>
+      <%= render "shared/change_locale" %>
+
+    </ul>
+    <!-- End of Sidebar -->
+  
+
+<ul class="nav nav-pills phone pt-3 pb-3 justify-content-between">
+  <div class="phone_sidebar-logo ml-3">
+    <%= image_tag("logo.png", :alt => "logo") %>
+  </div>
+  <div class="row mr-4">
+    <li class="nav-item dropdown">
+      <a class="nav-link dropdown-toggle phone-nav-button", data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false"><%= t("groups.records") %></a>
+      <div class="dropdown-menu">
+        <%= link_to my_groups_path, class: "dropdown-item" do %>
+          <span> <%= t("groups.my_group") %>  </span>
+        <% end %>
+        <%= link_to attend_groups_path, class: "dropdown-item" do %>
+          <span><%= t("groups.attended_group") %></span>
+        <% end %>
+        <%= link_to show_follow_groups_path, class: "dropdown-item" do %>
+          <span><%= t("groups.follow_group") %></span>
+        <% end %>
+      </div>
+    </li>
+    <li class="nav-item dropdown">
+      <a class="nav-link dropdown-toggle phone-nav-button", data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false"><%= t("groups.create_group") %></a>
+      <div class="dropdown-menu">
+        <%= link_to public_groups_path, class: "dropdown-item" do %>
+          <span><%= t("groups.public_group") %></span>
+        <% end %>
+        <%= link_to new_group_path, class: "dropdown-item" do %>
+          <span><%= t("groups.new_group") %></span>
+        <% end %>
+      </div>
+    </li>
+    <li class="nav-item dropdown">
+      <a class="nav-link dropdown-toggle phone-nav-button", data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false"><%= t("groups.others") %></a>
+      <div class="dropdown-menu">
+        <%= link_to edit_user_registration_path, class: "dropdown-item" do %>
+          <span><%= t("groups.self_info") %></span>
+        <% end %>
+        <%= link_to destroy_user_session_path, class: "dropdown-item" ,method: 'delete'  do %>
+          <span><%= t("groups.logout") %></span>
+        <% end %>
+      </div>
+    </li>
+    <li class="nav-item dropdown">
+      <a class="nav-link dropdown-toggle phone-nav-button", data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false"><i class="fas fa-globe"></i></a>
+      <div class="dropdown-menu phone-left-menu">
+        <%= link_to '繁體中文', { url: nil , locale: "zh-TW"} , class: "dropdown-item" %>
+        <%= link_to 'English', { url: nil , locale: "en"} , class: "dropdown-item" %>
+        <%= link_to '日本語', { url: nil , locale: "jp"} , class: "dropdown-item" %>
+      </div>
+    </li>
+  </div>
+
+</ul>
+

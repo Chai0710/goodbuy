@@ -1,0 +1,52 @@
+body {
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-align: center;
+  align-items: center;
+  justify-content: center;
+  padding-top: 40px;
+  padding-bottom: 40px;
+
+}
+.box {
+  background-color: #fff;
+  margin: 50px;
+  width: 400px;
+  padding: 40px;
+  border-radius: 5px;
+  box-shadow: 3px 3px 10px #999;
+}
+.link_page_box .row{
+  width: auto;
+}
+
+@media screen and (max-width: 767px) {
+  .box {
+    width: 300px;
+  }
+}
+
+.url_for_buy {
+  font-size: 16px;
+  color: #5672d8;
+}
+
+.title {
+  color: #555;
+  font-size: 36px;
+}
+
+@media screen and (max-width: 768px) {
+  .box {
+    width: 300px;
+  }
+  .qrcodebox img {
+    width: 200px;
+  }
+  .title {
+    font-size: 30px;
+  }
+  .url_for_buy {
+    font-size: 14px;
+  }
+}

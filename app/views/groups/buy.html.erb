@@ -1,0 +1,239 @@
+<script src="https://kit.fontawesome.com/2ddcd7dcfc.js" crossorigin="anonymous"></script>
+
+<div class="wrap">
+  <div class="box">  
+    <div class="d-flex justify-content-start">
+      <h1> <%= @group.title %> </h1>
+      <div class="ml-2 mt-2">
+        <%= link_to t("groups.follow_group_icon"), follow_group_path, class: "btn btn-warning btn-sm", method: 'patch', remote: true %>
+      </div>
+    </div>
+
+    <div class = "container text-left mt-3 mb-4">
+      <table class="table-sm  ta-info">
+        <tr>
+          <td class="ta-title"><i class="fa fa-phone"></i> <%= t("groups.phone") %></td>
+          <td class="ta-content"> <%= @group.phone %> </td>
+        </tr>
+        <tr>
+          <td class="ta-title"><i class="fa fa-map-marker"></i> <%= t("groups.address") %></td>
+          <td class="ta-content"> <%= @group.address %> </td>
+        </tr>
+        
+        <tr>
+          <td class="ta-title"><i class="fas fa-comments"></i> <%= t("groups.description") %></td>
+          <td class="ta-content"> <%= @group.description %> </td>
+        </tr>
+      
+      </table>
+  </div>
+
+
+
+
+
+
+
+
+
+    <div class="menu-pic d-flex align-items-center justify-content-center mb-5">
+      <% if @group.shop_photo.attached? %>
+        <div class="row justify-content-center">
+        <%= image_tag @group.shop_photo.variant(resize: "300x300"), class: "group-img " %>
+        </div>
+      <% end %>
+    </div>
+
+
+    <%# <div class="modal" tabindex="-1" role="dialog" id="myModal">
+      <div class="modal-dialog" role="document">
+        <div class="alert alert-info alert-dismissible fade show" role="alert">
+          已加入購買清單!
+        <button class="close" data-dismiss="alert">&times;</button></div>
+      </div>
+    </div> %>
+    <div class="alert-con"></div>
+
+
+  
+  
+    <div class="buy-pc">
+      <div id="tab-demo" class="m-auto">
+          <ul class="tab-title">
+              <li><a href="#tab01"> <%= t("groups.join_group") %> </a></li>
+              <li><a href="#tab02" id="checkout_paginate"><%= t("groups.check_order") %></a></li>
+              <li><a href="#tab03"><%= t("groups.look_others") %></a></li>
+          </ul>
+    
+          <div id="tab01" class="tab-inner">
+            <form>
+              <h6 class="border-bottom border-gray pb-2"><%= t("groups.select") %></h6>
+              <div class="row media-body pb-3 lh-125 border-bottom border-gray mt-3">
+                <div class="products col-6">
+                  <% @products.each do |p| %>
+                    <div class="product" data-product= "<%= p.id %>">
+                      <%= radio_button_tag(:p, p.price ) %> <%= p.name %> <%= p.price %><%= t("groups.dollars") %>
+                    </div>
+                  <% end %>
+                </div>
+                <div class="options col-6">
+                  <% @options.each do |o| %>
+                    <div class="option" data-option= "<%= o.id %>">
+                      <%= check_box_tag(:o, o.price) %>
+                      <%= o.name %> <%= o.price %><%= t("groups.dollars") %>
+                    </div>
+                  <% end %>
+                </div>
+              </div>
+              <div class="rounded mt-3"><%= t("groups.price") %>：<span class="total-price"></span></div>
+              <button class='mt-3 btn btn-buy' id='buy'><%= t("groups.buy_buy") %></button>
+            </form>
+          </div>
+    
+          <div id="tab02" class="tab-inner">
+            <h6 class="border-bottom border-gray pb-2"><%= t("groups.my_shop_list") %></h6>
+            <div class="order-items text-muted">
+              <img data-src="holder.js/32x32?theme=thumb&bg=007bff&fg=007bff&size=1" alt="" class="mr-2 rounded">
+              
+              <%= form_with url: checkout_group_path, local: true do |form| %>
+                <div id='order-item'>
+                </div>
+                <%= form.submit t("groups.checkout"), :class => 'mt-3 btn btn-pay' %>
+              <% end %>
+            </div>        
+          </div>
+    
+          <div id="tab03" class="tab-inner">
+              <h6><%= t("groups.all_shop_list") %></h6>
+              <table class= "table">
+                  <thead>
+                  <tr>
+                    <td><%= t("groups.buy_man") %></td>
+                    <td><%= t("groups.product_name") %></td>
+                    <td><%= t("groups.option") %></td>
+                    <td><%= t("groups.product_price") %></td>
+                    <td><%= t("groups.price") %></td>
+                  </tr>
+                  </thead>
+                  <tbody>
+                    <% @group.orders.each do |order| %>
+                      <% order.order_items.each do |order_item| %>
+                        <tr>
+                          <td>
+                            <%= order_item.order.buyer.name %>
+                          </td>
+                          <td>
+                            <%= order_item.product.name %>
+                          </td>
+                          <td>
+                            <% order_item.options.each do |option| %>
+                              <%= option.name %>
+                              (+<%= option.price %><%= t("groups.dollars") %>)
+                            <% end %>
+                          </td>
+                          <td>
+                            <%= order_item.product.price %>
+                          </td>
+                          <td>
+                            <%= order_item.total_price %>
+                          </td>
+                        </tr>
+                      <% end %>
+                    <% end %>
+                  </tbody>
+              </table>
+          </div>
+          
+      </div>
+    </div>
+
+
+    <div class="buy-phone">
+      <div id="tab-demo" class="m-auto">
+        <div div id="tab01" class="item others-list">
+        <h2><%= t("groups.look_others") %></h2>
+          <h6><%= t("groups.all_shop_list") %></h6>
+          <table class= "table">
+              <thead>
+              <tr>
+                <td><%= t("groups.buy_man") %></td>
+                <td><%= t("groups.product_name") %></td>
+                <td><%= t("groups.option") %></td>
+                <td><%= t("groups.price") %></td>
+              </tr>
+              </thead>
+              <tbody>
+                <% @group.orders.each do |order| %>
+                  <% order.order_items.each do |order_item| %>
+                    <tr>
+                      <td>
+                        <%= order_item.order.buyer.name %>
+                      </td>
+                      <td>
+                        <%= order_item.product.name %>
+                      </td>
+                      <td>
+                        <% order_item.options.each do |option| %>
+                          <%= option.name %>
+                          (+<%= option.price %><%= t("groups.dollars") %>)
+                        <% end %>
+                      </td>
+                      <td>
+                        <%= order_item.total_price %>
+                      </td>
+                    </tr>
+                  <% end %>
+                <% end %>
+              </tbody>
+          </table>
+        </div>
+
+        <%# <hr class="mt-5"> %>
+
+        
+            <div id="tab02" class="item product-list">
+              <h2><%= t("groups.join_group") %></h2>
+              <form>
+                <h6 class="border-bottom border-gray pb-2"><%= t("groups.select") %></h6>
+                <div class="row media-body pb-3 lh-125 border-bottom border-gray mt-3">
+                  <div class="products col-6">
+                    <% @products.each do |p| %>
+                      <div class="product" data-product= "<%= p.id %>">
+                        <%= radio_button_tag(:p, p.price ) %> <%= p.name %> <%= p.price %><%= t("groups.dollars") %>
+                      </div>
+                    <% end %>
+                  </div>
+                  <div class="options col-6">
+                    <% @options.each do |o| %>
+                      <div class="option" data-option= "<%= o.id %>">
+                        <%= check_box_tag(:o, o.price) %>
+                        <%= o.name %> <%= o.price %><%= t("groups.dollars") %>
+                      </div>
+                    <% end %>
+                  </div>
+                </div>
+                <div class="rounded mt-3"><%= t("groups.price") %>：<span class="total-price2"></span></div>
+                <button class='mt-3 btn btn-buy' id='buy2'><%= t("groups.buy_buy") %></button>
+              </form>
+            </div>
+
+            <%# <hr class="mt-5"> %>
+
+            
+            <div id="tab03" class="item option-list">
+              <h2><%= t("groups.check_order") %></h2>
+              <h6 class="border-bottom border-gray pb-2"><%= t("groups.my_shop_list") %></h6>
+              <div class="order-items text-muted">
+                <img data-src="holder.js/32x32?theme=thumb&bg=007bff&fg=007bff&size=1" alt="" class="mr-2 rounded">
+                
+                <%= form_with url: checkout_group_path, local: true do |form| %>
+                  <div id='order-item2'>
+                  </div>
+                  <%= form.submit t("groups.checkout"), :class => 'mt-3 btn btn-pay' %>
+                <% end %>
+              </div>        
+            </div>
+      </div>
+    </div>
+  </div>
+</div>
